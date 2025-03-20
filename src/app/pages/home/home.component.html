@@ -1,0 +1,132 @@
+<app-layout>
+  <div class="container my-5">
+    <h3>Cadastre seu Produto</h3>
+    <p>Preencha os campos para cadastrar um novo produto</p>
+    <form class="my-4" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
+      <!-- Campo: URL da Foto -->
+      <div class="mb-3">
+        <label for="photo" class="form-label">URL da foto do produto</label>
+        <input
+          type="url"
+          formControlName="photo"
+          class="form-control"
+          id="photo"
+          placeholder="https://exemplo.com/foto.jpg"
+        />
+        <div *ngIf="form.get('photo')?.invalid && form.get('photo')?.touched" class="text-danger">
+          <div *ngIf="form.get('photo')?.errors?.['required']">
+            O campo URL da foto é obrigatório.
+          </div>
+          <div *ngIf="form.get('photo')?.errors?.['minlength']">
+            A URL da foto deve ter pelo menos 5 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo: Nome -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome do Produto</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          id="name"
+          placeholder="Digite o nome do produto"
+        />
+        <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+          <div *ngIf="form.get('name')?.errors?.['required']">
+            O campo Nome é obrigatório.
+          </div>
+          <div *ngIf="form.get('name')?.errors?.['minlength']">
+            O nome deve ter pelo menos 3 caracteres.
+          </div>
+          <div *ngIf="form.get('name')?.errors?.['maxlength']">
+            O nome deve ter no máximo 42 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo: Quantidade -->
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Quantidade</label>
+        <input
+          type="number"
+          formControlName="quantity"
+          class="form-control"
+          id="quantity"
+          placeholder="Digite a quantidade"
+        />
+        <div *ngIf="form.get('quantity')?.invalid && form.get('quantity')?.touched" class="text-danger">
+          <div *ngIf="form.get('quantity')?.errors?.['required']">
+            O campo quantidade é obrigatório.
+          </div>
+          <div *ngIf="form.get('quantity')?.errors?.['min']">
+            A quantidade não pode ser negativa.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo: Marca -->
+      <div class="mb-3">
+        <label for="mark" class="form-label">Marca</label>
+        <input
+          type="text"
+          formControlName="mark"
+          class="form-control"
+          id="mark"
+          placeholder="Digite a marca do produto"
+        />
+        <div *ngIf="form.get('mark')?.invalid && form.get('mark')?.touched" class="text-danger">
+          <div *ngIf="form.get('mark')?.errors?.['required']">
+            O campo marca é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo: Descrição -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Descrição</label>
+        <input
+          type="text"
+          formControlName="description"
+          class="form-control"
+          id="description"
+          placeholder="Digite a descrição do produto"
+        />
+        <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched" class="text-danger">
+          <div *ngIf="form.get('description')?.errors?.['required']">
+            O campo descrição é obrigatório.
+          </div>
+          <div *ngIf="form.get('description')?.errors?.['minlength']">
+            A descrição deve ter pelo menos 5 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo: Preço -->
+      <div class="mb-3">
+        <label for="price" class="form-label">Preço</label>
+        <input
+          type="number"
+          formControlName="price"
+          class="form-control"
+          id="price"
+          placeholder="Digite o preço do produto"
+        />
+        <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched" class="text-danger">
+          <div *ngIf="form.get('price')?.errors?.['required']">
+            O campo preço é obrigatório.
+          </div>
+          <div *ngIf="form.get('price')?.errors?.['min']">
+            O preço não pode ser negativo.
+          </div>
+        </div>
+      </div>
+
+      <!-- Botão de Envio -->
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary">
+        Enviar
+      </button>
+    </form>
+  </div>
+</app-layout>

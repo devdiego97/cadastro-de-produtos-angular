@@ -1,0 +1,13 @@
+<app-layout>
+  <div class="container my-5">
+    <h1>Produtos Cadastrados</h1>
+    <div class="pets-list my-4">
+      <div>
+        <div  class="row">
+          <app-card-product *ngFor="let product of listProducts" class="col-12 my-3 col-md-3" [product]="product"></app-card-product>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>
+

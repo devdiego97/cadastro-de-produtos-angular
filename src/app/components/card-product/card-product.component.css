@@ -1,0 +1,9 @@
+img{
+  width: 110px;
+
+}
+.cx-img{
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
